@@ -43,21 +43,21 @@ class MainActivity : AppCompatActivity() {
         setupIndicator()
         setCurrentIndicator(0)
         binding.introSliderViewPager.registerOnPageChangeCallback(object :
-            ViewPager2.OnPageChangeCallback(){
+            ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 setCurrentIndicator(position)
             }
-            }
+        }
         )
     }
 
-    private fun setupIndicator(){
+    private fun setupIndicator() {
         val indicators = arrayOfNulls<ImageView>(introSliderAdapter.itemCount)
         val layoutParams: LinearLayout.LayoutParams =
             LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
-        layoutParams.setMargins(8,0,8,0)
-        for (i in indicators.indices){
+        layoutParams.setMargins(8, 0, 8, 0)
+        for (i in indicators.indices) {
             indicators[i] = ImageView(applicationContext)
             indicators[i].apply {
                 this?.setImageDrawable(
@@ -72,11 +72,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setCurrentIndicator(index: Int){
+    private fun setCurrentIndicator(index: Int) {
         val childCount = binding.indicatorContainer.childCount
-        for(i in 0 until childCount){
+        for (i in 0 until childCount) {
             val imageView = binding.indicatorContainer[i] as ImageView
-            if(i == index){
+            if (i == index) {
                 imageView.setImageDrawable(
                     ContextCompat.getDrawable(
                         applicationContext,
