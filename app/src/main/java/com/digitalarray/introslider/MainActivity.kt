@@ -1,5 +1,6 @@
 package com.digitalarray.introslider
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
@@ -48,8 +49,23 @@ class MainActivity : AppCompatActivity() {
                 super.onPageSelected(position)
                 setCurrentIndicator(position)
             }
+        })
+        binding.buttonNext.setOnClickListener {
+            if (binding.introSliderViewPager.currentItem + 1 < introSliderAdapter.itemCount) {
+                binding.introSliderViewPager.currentItem += 1
+            } else {
+                Intent(applicationContext, LoginActivity::class.java).also {
+                    startActivity(it)
+                    finish()
+                }
+            }
         }
-        )
+        binding.textSkipIntro.setOnClickListener {
+            Intent(applicationContext, LoginActivity::class.java).also {
+                startActivity(it)
+                finish()
+            }
+        }
     }
 
     private fun setupIndicator() {
@@ -94,3 +110,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
+
+
+
